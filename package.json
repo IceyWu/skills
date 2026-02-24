@@ -1,21 +1,23 @@
 {
   "private": true,
-  "name": "iceywu-skills",
+  "name": "skills",
   "version": "0.1.0",
   "type": "module",
   "packageManager": "pnpm@10.30.2",
   "scripts": {
-    "lint": "ultracite check .",
-    "lint:fix": "ultracite fix .",
-    "format": "biome format . --write",
-    "format:check": "biome format .",
-    "start": "node scripts/cli.js",
+    "lint": "ultracite check scripts/cli.ts biome.jsonc",
+    "lint:fix": "ultracite fix scripts/cli.ts biome.jsonc",
+    "format": "biome format scripts/cli.ts biome.jsonc --write",
+    "format:check": "biome format scripts/cli.ts biome.jsonc",
+    "start": "node --experimental-strip-types scripts/cli.ts",
     "prepare": "simple-git-hooks",
-    "check": "ultracite check",
-    "fix": "ultracite fix"
+    "check": "ultracite check scripts/cli.ts biome.jsonc",
+    "fix": "ultracite fix scripts/cli.ts biome.jsonc"
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.4",
+    "@clack/prompts": "^1.0.1",
+    "@types/node": "^25.3.0",
     "lint-staged": "^16.2.7",
     "simple-git-hooks": "^2.13.1",
     "ultracite": "7.2.3"

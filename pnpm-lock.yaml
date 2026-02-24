@@ -11,6 +11,12 @@ importers:
       '@biomejs/biome':
         specifier: 2.4.4
         version: 2.4.4
+      '@clack/prompts':
+        specifier: ^1.0.1
+        version: 1.0.1
+      '@types/node':
+        specifier: ^25.3.0
+        version: 25.3.0
       lint-staged:
         specifier: ^16.2.7
         version: 16.2.7
@@ -85,6 +91,9 @@ packages:
 
   '@clack/prompts@1.0.1':
     resolution: {integrity: sha512-/42G73JkuYdyWZ6m8d/CJtBrGl1Hegyc7Fy78m5Ob+jF85TOUmLR5XLce/U3LxYAw0kJ8CT5aI99RIvPHcGp/Q==}
+
+  '@types/node@25.3.0':
+    resolution: {integrity: sha512-4K3bqJpXpqfg2XKGK9bpDTc6xO/xoUP/RBWS7AtRMug6zZFaRekiLzjVtAoZMquxoAbzBvy5nxQ7veS5eYzf8A==}
 
   ansi-escapes@7.3.0:
     resolution: {integrity: sha512-BvU8nYgGQBxcmMuEeUEmNTvrMVjJNSH7RgW24vXexN4Ven6qCvy4TntnvlnwnMLTVlcRQQdbRY8NKnaIoeWDNg==}
@@ -285,6 +294,9 @@ packages:
       oxlint:
         optional: true
 
+  undici-types@7.18.2:
+    resolution: {integrity: sha512-AsuCzffGHJybSaRrmr5eHr81mwJU3kjw6M+uprWvCXiNeN9SOGwQ3Jn8jb8m3Z6izVgknn1R0FTCEAP2QrLY/w==}
+
   wrap-ansi@9.0.2:
     resolution: {integrity: sha512-42AtmgqjV+X1VpdOfyTGOYRi0/zsoLqtXQckTmqTeybT+BDIbM/Guxo7x3pE2vtpr1ok6xRqM9OpBe+Jyoqyww==}
     engines: {node: '>=18'}
@@ -341,6 +353,10 @@ snapshots:
       '@clack/core': 1.0.1
       picocolors: 1.1.1
       sisteransi: 1.0.5
+
+  '@types/node@25.3.0':
+    dependencies:
+      undici-types: 7.18.2
 
   ansi-escapes@7.3.0:
     dependencies:
@@ -519,6 +535,8 @@ snapshots:
       glob: 13.0.6
       jsonc-parser: 3.3.1
       nypm: 0.6.5
+
+  undici-types@7.18.2: {}
 
   wrap-ansi@9.0.2:
     dependencies:

@@ -1,4 +1,25 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-  "extends": ["ultracite/biome/core"]
+  "extends": ["ultracite/biome/core"],
+  "overrides": [
+    {
+      "includes": ["scripts/cli.ts"],
+      "linter": {
+        "rules": {
+          "complexity": {
+            "noExcessiveCognitiveComplexity": "off"
+          },
+          "performance": {
+            "noNamespaceImport": "off"
+          },
+          "suspicious": {
+            "useAwait": "off"
+          },
+          "style": {
+            "useDefaultSwitchClause": "off"
+          }
+        }
+      }
+    }
+  ]
 }
