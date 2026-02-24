@@ -1,0 +1,30 @@
+{
+  "private": true,
+  "name": "iceywu-skills",
+  "version": "0.1.0",
+  "type": "module",
+  "packageManager": "pnpm@10.30.2",
+  "scripts": {
+    "lint": "ultracite check .",
+    "lint:fix": "ultracite fix .",
+    "format": "biome format . --write",
+    "format:check": "biome format .",
+    "start": "node scripts/cli.js",
+    "prepare": "simple-git-hooks",
+    "check": "ultracite check",
+    "fix": "ultracite fix"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.4",
+    "lint-staged": "^16.2.7",
+    "simple-git-hooks": "^2.13.1",
+    "ultracite": "7.2.3"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}": "ultracite fix",
+    "*.{md,json,yml,yaml}": "biome format --write"
+  }
+}
