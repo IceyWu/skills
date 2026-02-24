@@ -1,6 +1,6 @@
 ---
 name: frontend-dev-tools
-description: A workflow for interacting with frontend projects using Playwright/Chrome DevTools and querying library documentation via Context7.
+description: Use this skill when users ask to run/open/preview/debug a frontend project (including Chinese intents like 运行/打开/预览/调试). Enforce MCP browser tools (Playwright/Chrome DevTools) first, then fallback only if MCP is unavailable.
 metadata:
   author: IceyWu
   homepage: https://github.com/IceyWu
@@ -10,21 +10,42 @@ metadata:
 
 # Frontend Development Tools & Workflow
 
-This skill defines the standard operating procedure for interacting with frontend projects and querying library documentation.
+Use this skill to standardize frontend run/open/preview/debug tasks.
 
-## 1. Browser Interaction for Frontend Projects
+## 1. Trigger (Hard)
 
-Whenever the user mentions running, opening, previewing, or debugging a frontend project/application:
+Apply this skill when the user intent includes frontend **run/open/preview/debug**.
 
-- **Action**: You MUST use browser automation tools such as **Playwright** (`mcp_microsoft_pla_browser_*`) or **Chrome DevTools** (`mcp_chrome-devtoo_*`) to open the local server URL.
-- **Purpose**: This allows you to visually inspect the page, check console logs, analyze network requests, and interact with the UI directly to assist the user more effectively.
+Examples of hard triggers:
 
-## 2. Library and Package Documentation
+- English: run, open, preview, debug (frontend project/app/page)
+- Chinese: 运行、打开、预览、调试（前端项目/页面）
 
-Whenever the user asks about the usage, API, or best practices of a specific package, library, or framework (e.g., React, Vue, Vite, Tailwind, etc.), or if you need to write code using an unfamiliar library:
+## 2. Required Flow (MCP First)
 
-- **Action**: You MUST use the **Context7** MCP tools.
-- **Workflow**:
-  1. First, call `mcp_io_github_ups_resolve-library-id` to find the correct Context7-compatible library ID.
-  2. Then, call `mcp_io_github_ups_get-library-docs` using the resolved ID to fetch up-to-date documentation, API references, or code examples.
-- **Purpose**: Ensures that the code and advice provided are based on the latest official documentation rather than potentially outdated training data.
+For hard-trigger requests, execute in this order:
+
+1. Start or confirm dev server (for example `pnpm dev`).
+2. Use MCP browser tools first: `mcp_microsoft_pla_browser_*` or `mcp_chrome-devtoo_*`.
+3. Verify at least one visible UI signal (title, heading, or key element).
+4. Report result after verification.
+
+Rules:
+
+- If MCP browser tools are available, they are mandatory as the primary path.
+- Do not finish the task with terminal startup logs only.
+
+## 3. Fallback Policy
+
+Fallback is allowed only when MCP path is unavailable or failed.
+
+- You may use terminal checks and `open_simple_browser` as fallback.
+- You must explicitly state the blocker (for example: MCP browser runtime unavailable).
+- You should attempt recovery first when possible (for example install browser/runtime), then fallback.
+
+## 4. Quick Example: “运行/打开项目”
+
+1. Start server (`pnpm dev` or equivalent).
+2. Open local URL via MCP browser tool.
+3. Verify page signal (e.g., title/h1).
+4. Then return completion status.

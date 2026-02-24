@@ -28,4 +28,8 @@ export const vendors: Record<string, VendorSkillMeta> = {
   },
 };
 
-export const manual = ["iceywu-dev-workflow", "frontend-dev-tools"];
+export const manual = [
+  "iceywu-dev-workflow",
+  "frontend-dev-tools",
+  "frontend-docs-context7",
+];

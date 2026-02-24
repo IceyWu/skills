@@ -27,6 +27,6 @@
   },
   "lint-staged": {
     "*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}": "ultracite fix",
-    "*.{md,json,yml,yaml}": "biome format --write"
+    "*.{md,json,yml,yaml}": "biome format --write --no-errors-on-unmatched"
   }
 }
